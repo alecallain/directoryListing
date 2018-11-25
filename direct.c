@@ -45,6 +45,7 @@ int main (int argc, char** argv) {
 			while (entry = readdir(dirPtr)) {
 				stat(entryPtr->d_name, &statBuf);
 				printf("File named %-20s user number is %d and groupID is %d\n", entryPtr->d_name, statBuf.st_uid, statBuf.st_gid);
+			}
 		}
 		// gives the user the inode for each file/directory
 		else if (argv[1] == "-i") {
