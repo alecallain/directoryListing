@@ -23,7 +23,7 @@ int main(int argc, char *argv[])
   fgets(input, 256, stdin);
   parse(input, parsedInput);
   // while(strcmp(parsedInput[0], "exit") != 0){
-  printf("0:%s, 1:%s, 2:%s", parsedInput[0], parsedInput[1], "that");
+  printf("0:%s, ", parsedInput);
     // path exists check
     if (sizeof(parsedInput) < 2) {
     		printf ("Wrong number of arguments\n");
