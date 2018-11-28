@@ -23,13 +23,13 @@ int main(int argc, char *argv[])
   fgets(input, 256, stdin);
   parse(input, parsedInput);
   // while(strcmp(parsedInput[0], "exit") != 0){
-  printf("0:%s, ", parsedInput[0]);
+  printf("0: %s \n", parsedInput[1]);
     // path exists check
     if (sizeof(parsedInput) < 2) {
     		printf ("Wrong number of arguments\n");
     		exit(1);
     }
-    if (stat (parsedInput[0], &statBuf) < 0) {
+    if (stat (parsedInput[1], &statBuf) < 0) {
     		perror ("huh?  there is ");
     		exit(1);
     }
