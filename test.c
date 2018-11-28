@@ -27,7 +27,7 @@ int main(int argc, char *argv[])
     		exit(1);
     }
 
-    dirPtr = opendir (argc[1]);
+    dirPtr = opendir (argv[1]);
 
     while ((entryPtr = readdir (dirPtr))){
       stat (entryPtr->d_name, &statBuf);
