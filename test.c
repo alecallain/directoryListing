@@ -29,7 +29,7 @@ int main(int argc, char *argv[])
     		printf ("Wrong number of arguments\n");
     		exit(1);
     }
-    if (stat (parsedInput[1], &statBuf) < 0) {
+    if (stat (parsedInput[0], &statBuf) < 0) {
     		perror ("huh?  there is ");
     		exit(1);
     }
