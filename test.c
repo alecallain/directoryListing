@@ -18,15 +18,15 @@ int main(int argc, char *argv[])
 
   char input[256];
   char* parsedInput[256];
-  struct rusage usage;
+
   printf("$p2shell: ");
   fgets(input, 256, stdin);
   parse(input, parsedInput);
   while(strcmp(parsedInput[0], "exit") != 0){
 
     // path exists check
-    if (parsedInput[1] < 2) {
-    		printf ("Usage: filename required\n");
+    if (sizeof(parsedInput) < 2) {
+    		printf ("Wrong number of arguments\n");
     		exit(1);
     }
     if (stat (parsedInput[1], &statBuf) < 0) {
