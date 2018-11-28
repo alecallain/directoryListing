@@ -15,27 +15,19 @@ int main(int argc, char *argv[])
   struct dirent *entryPtr;
   struct stat statBuf;
 
-
-  char input[256];
-  char* parsedInput[256];
-
-  printf("$p2shell: ");
-  fgets(input, 256, stdin);
-  parse(input, parsedInput);
   // while(strcmp(parsedInput[0], "exit") != 0){
-  printf("0: %s \n", parsedInput[1]);
+  printf("0: %s \n", argv[1]);
     // path exists check
-    if (sizeof(parsedInput) < 2) {
+    if (argc < 2) {
     		printf ("Wrong number of arguments\n");
     		exit(1);
     }
-    if (stat (parsedInput[1], &statBuf) < 0) {
+    if (stat (argv[1], &statBuf) < 0) {
     		perror ("huh?  there is ");
     		exit(1);
     }
 
-
-    dirPtr = opendir (parsedInput[1]+NULL);
+    dirPtr = opendir (parsedInput[1]);
 
     while ((entryPtr = readdir (dirPtr))){
       stat (entryPtr->d_name, &statBuf);
