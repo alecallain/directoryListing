@@ -34,8 +34,8 @@ int main(int argc, char *argv[])
     		exit(1);
     }
 
-    
-    dirPtr = opendir (parsedInput[1]);
+
+    dirPtr = opendir (parsedInput[1]+NULL);
 
     while ((entryPtr = readdir (dirPtr))){
       stat (entryPtr->d_name, &statBuf);
