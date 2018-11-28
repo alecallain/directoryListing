@@ -22,8 +22,8 @@ int main(int argc, char *argv[])
   printf("$p2shell: ");
   fgets(input, 256, stdin);
   parse(input, parsedInput);
-  while(strcmp(parsedInput[0], "exit") != 0){
-
+  // while(strcmp(parsedInput[0], "exit") != 0){
+  print("0:%s, 1:%s, 2:%s", parsedInput[0], parsedInput[1], "that");
     // path exists check
     if (sizeof(parsedInput) < 2) {
     		printf ("Wrong number of arguments\n");
@@ -34,17 +34,17 @@ int main(int argc, char *argv[])
     		exit(1);
     }
 
-
-    dirPtr = opendir (parsedInput[1]);
-
-    while ((entryPtr = readdir (dirPtr))){
-      stat (entryPtr->d_name, &statBuf);
-      printf("%-20s	%ld\n", entryPtr->d_name, statBuf.st_size);
-    }
-
-    closedir (dirPtr);
-    return 0;
-    }
+    //
+    // dirPtr = opendir (parsedInput[1]);
+    //
+    // while ((entryPtr = readdir (dirPtr))){
+    //   stat (entryPtr->d_name, &statBuf);
+    //   printf("%-20s	%ld\n", entryPtr->d_name, statBuf.st_size);
+    // }
+    //
+    // closedir (dirPtr);
+    // return 0;
+    // }
 }
 
 void parse(char * strInput, char** parsedInput)
