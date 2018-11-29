@@ -8,20 +8,6 @@
 #include <errno.h>
 #include <string.h>
 
-
-public void premissions(stat statBuf){
-    printf( (S_ISDIR(statBuf.st_mode)) ? "d" : "-");
-    printf( (statBuf.st_mode & S_IRUSR) ? "r" : "-");
-    printf( (statBuf.st_mode & S_IWUSR) ? "w" : "-");
-    printf( (statBuf.st_mode & S_IXUSR) ? "x" : "-");
-    printf( (statBuf.st_mode & S_IRGRP) ? "r" : "-");
-    printf( (statBuf.st_mode & S_IWGRP) ? "w" : "-");
-    printf( (statBuf.st_mode & S_IXGRP) ? "x" : "-");
-    printf( (statBuf.st_mode & S_IROTH) ? "r" : "-");
-    printf( (statBuf.st_mode & S_IWOTH) ? "w" : "-");
-    printf( (statBuf.st_mode & S_IXOTH) ? "x" : "-");
-  }
-
 int main(int argc, char *argv[]){
   DIR *dirPtr;
   struct dirent *entryPtr;
@@ -78,4 +64,17 @@ int main(int argc, char *argv[]){
   closedir (dirPtr);
   return 0;
 
+}
+
+public void premissions(struct stat statBuf){
+    printf( (S_ISDIR(statBuf.st_mode)) ? "d" : "-");
+    printf( (statBuf.st_mode & S_IRUSR) ? "r" : "-");
+    printf( (statBuf.st_mode & S_IWUSR) ? "w" : "-");
+    printf( (statBuf.st_mode & S_IXUSR) ? "x" : "-");
+    printf( (statBuf.st_mode & S_IRGRP) ? "r" : "-");
+    printf( (statBuf.st_mode & S_IWGRP) ? "w" : "-");
+    printf( (statBuf.st_mode & S_IXGRP) ? "x" : "-");
+    printf( (statBuf.st_mode & S_IROTH) ? "r" : "-");
+    printf( (statBuf.st_mode & S_IWOTH) ? "w" : "-");
+    printf( (statBuf.st_mode & S_IXOTH) ? "x" : "-");
 }
