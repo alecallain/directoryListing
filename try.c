@@ -45,15 +45,15 @@ int main(int argc, char *argv[]){
       printf("%ld ", statBuf.st_nlink);
 
       // Print out owners name if found using getpwuid()
-      if ((psswd = getpwuid(statBuf.st_uid)) != NULL)
-        printf("%-8.8s ", psswd->pw_name);
-      else
+      // if ((psswd = getpwuid(statBuf.st_uid)) != NULL)
+      //   printf("%-8.8s ", psswd->pw_name);
+      // else
         printf("%-8d ", statBuf.st_uid);
 
       // group name in words if found using getgrgid() else just numbers
-      if ((group = getgrgid(statBuf.st_gid)) != NULL)
-        printf("%-8.8s ", group->gr_name);
-      else
+      // if ((group = getgrgid(statBuf.st_gid)) != NULL)
+      //   printf("%-8.8s ", group->gr_name);
+      // else
         printf("%-8d ", statBuf.st_gid);
 
 
