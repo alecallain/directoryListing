@@ -16,7 +16,7 @@ int main(int argc, char *argv[]){
   DIR *dirPtr;
   struct dirent *entryPtr;
   struct stat statBuf;
-  char path[20];
+  char path[20] = ".";
   // path exists check
   if (argc < 2) {
     printf ("Wrong number of arguments\n");
@@ -33,7 +33,7 @@ int main(int argc, char *argv[]){
 	}
 
   // Open directory.
-  if ((dirPtr = opendir(argv[2])) == NULL) {
+  if ((dirPtr = opendir(path)) == NULL) {
     printf("%s is NOT a directory.\n", argv[1]);
     exit(1);
   }
