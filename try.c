@@ -8,6 +8,8 @@
 #include <errno.h>
 #include <string.h>
 
+public void premissions(struct stat statBuf);
+
 int main(int argc, char *argv[]){
   DIR *dirPtr;
   struct dirent *entryPtr;
