@@ -21,9 +21,10 @@ int main(int argc, char *argv[])
        perror ("huh?  there is ");
        exit(1);
    }
+   
    // Open the directory.
 	if ((dirPtr = opendir(argv[1])) == NULL) {
-		printf("Not a directory.\n");
+		printf("%s isn NOT a directory.\n", argv[1]);
 		return 1;
 	}
 
