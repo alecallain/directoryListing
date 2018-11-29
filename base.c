@@ -29,10 +29,7 @@ int main(int argc, char *argv[]){
   printf("This is what you requested: %s\n\n.", argv[2]);
 
   // Open directory.
-  if ((dirPtr = opendir(argv[2])) == NULL) {
-    printf("%s is NOT a directory.\n", argv[1]);
-    exit(1);
-  }
+  dirPtr = opendir(argv[2])
 
   // while there are things to read from the dir
   while ((entryPtr = readdir (dirPtr))){
