@@ -59,6 +59,8 @@ int main(int argc, char *argv[]){
       //stat.st_size
       printf("%ld ", statBuf.st_size);
 
+      //stat.st_atime;
+      printf("%s ",statBuf.st_atime);
     }
 
     // Include inode num on each file print, found in Inode man page stat.st_ino;.
