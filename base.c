@@ -26,7 +26,7 @@ int main(int argc, char *argv[]){
     perror ("huh? There is ");
     exit(1);
   }
-  printf("This is what you requested: %s\n\n.", argv[1]);
+  printf("This is what you requested: %s\n\n.", argv[2]);
 
   // Open directory.
   if ((dirPtr = opendir(argv[2])) == NULL) {
