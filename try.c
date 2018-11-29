@@ -52,7 +52,7 @@ int main(int argc, char *argv[]){
         printf("%-8d ", statBuf.st_gid);
 
         //stat.st_size
-        printf("%%-10 %ld", statBuf.st_size);
+        printf("%-10ld ", statBuf.st_size);
 
         //stat.st_atime;
         // user friendly output https://stackoverflow.com/questions/13542345/how-to-convert-st-mtime-which-get-from-stat-function-to-string-or-char
