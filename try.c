@@ -86,7 +86,7 @@ void modTime(struct stat statBuf){
   localtime_r(&t, &lt);
   char timbuf[80];
   strftime(timbuf, sizeof(timbuf), "%c", &lt);
-  print("%s", timbuf);
+  printf("%s", timbuf);
 }
 
 void premissions(struct stat statBuf){
