@@ -38,44 +38,37 @@ int main(int argc, char *argv[]){
   // while there are things to read from the dir
   while ((entryPtr = readdir (dirPtr))){
     stat (entryPtr->d_name, &statBuf);
-    if(strchr(argv[1], 'n')) {
+    if (S_ISDIR(statBuf.st_mode)) {
+      if(strchr(argv[1], 'n')) {
 
-      // printf("%o ", statBuf.st_mode & (S_IRWXU | S_IRWXG | S_IRWXO));
-      // a user friendly print https://stackoverflow.com/questions/10323060/printing-file-permissions-like-ls-l-using-stat2-in-c
-      premissions(statBuf);
+        // printf("%o ", statBuf.st_mode & (S_IRWXU | S_IRWXG | S_IRWXO));
+        // a user friendly print https://stackoverflow.com/questions/10323060/printing-file-permissions-like-ls-l-using-stat2-in-c
+        premissions(statBuf);
 
-      printf("%ld ", statBuf.st_nlink);
+        printf("%ld ", statBuf.st_nlink);
 
-      // Print out owners name if found using getpwuid()
-      // if ((psswd = getpwuid(statBuf.st_uid)) != NULL)
-      //   printf("%-8.8s ", psswd->pw_name);
-      // else
-      printf("%-8d ", statBuf.st_uid);
+        // else
+        printf("%-8d ", statBuf.st_uid);
 
-      // group name in words if found using getgrgid() else just numbers
-      // if ((group = getgrgid(statBuf.st_gid)) != NULL)
-      //   printf("%-8.8s ", group->gr_name);
-      // else
-      printf("%-8d ", statBuf.st_gid);
+        // else
+        printf("%-8d ", statBuf.st_gid);
 
-      //stat.st_size
-      printf("%ld ", statBuf.st_size);
+        //stat.st_size
+        printf("%ld ", statBuf.st_size);
 
-      //stat.st_atime;
-      // user friendly output https://stackoverflow.com/questions/13542345/how-to-convert-st-mtime-which-get-from-stat-function-to-string-or-char
-      // printf("%ld ",statBuf.st_atime);
-      modTime(statBuf);
+        //stat.st_atime;
+        // user friendly output https://stackoverflow.com/questions/13542345/how-to-convert-st-mtime-which-get-from-stat-function-to-string-or-char
+        // printf("%ld ",statBuf.st_atime);
+        modTime(statBuf);
+      }
 
+      // Include inode num on each file print, found in Inode man page stat.st_ino;.
+      if(strchr(argv[1], 'i'))
+        printf("%lu ", statBuf.st_ino);
 
-    }
-
-    // Include inode num on each file print, found in Inode man page stat.st_ino;.
-    if(strchr(argv[1], 'i'))
-      printf("%lu ", statBuf.st_ino);
-
-    printf("%s \n", entryPtr->d_name);
-
-    }
+      printf("%s \n", entryPtr->d_name);
+      }
+  }
 
   closedir (dirPtr);
   return 0;
