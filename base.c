@@ -29,7 +29,7 @@ int main(int argc, char *argv[]){
   printf("This is what you requested: %s\n\n.", argv[2]);
 
   // Open directory.
-  dirPtr = opendir(argv[2])
+  dirPtr = opendir(argv[2]);
 
   // while there are things to read from the dir
   while ((entryPtr = readdir (dirPtr))){
