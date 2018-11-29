@@ -10,7 +10,7 @@ int main(int argc, char *argv[])
    DIR *dirPtr;
    struct dirent *entryPtr;
    struct stat statBuf;
-
+   char* filePtr = "."
 
    // path exists check
    if (argc < 2) {
@@ -21,7 +21,7 @@ int main(int argc, char *argv[])
        perror ("huh?  there is ");
        exit(1);
    }
-
+   strcpy(filePtr, argv[1]);
    dirPtr = opendir (argv[1]);
 
    while ((entryPtr = readdir (dirPtr))){
