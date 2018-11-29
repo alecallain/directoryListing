@@ -26,11 +26,7 @@ int main(int argc, char *argv[]){
     perror ("huh? There is ");
     exit(1);
   }
-
-  // Was a file path given?
-	if (argc > 1 && strchr(argv[argc - 1], '/') != NULL) {
-		strcpy(path, argv[argc - 1]);
-	}
+  printf("This is what you requested: %s\n\n.", argv[1]);
 
   // Open directory.
   if ((dirPtr = opendir(path)) == NULL) {
