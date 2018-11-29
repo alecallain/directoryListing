@@ -29,12 +29,12 @@ int main(int argc, char *argv[]){
   printf("This is what you requested: %s\n\n.", argv[2]);
 
   // Open directory.
-  dirPtr = opendir(argv[2]);
+  dirPtr = opendir (argv[2]);
 
   // while there are things to read from the dir
   while ((entryPtr = readdir (dirPtr))){
     stat (entryPtr->d_name, &statBuf);
-    if (!S_ISDIR(statBuf.st_mode)) {
+    //if (!S_ISDIR(statBuf.st_mode)) {
       if(strchr(argv[1], 'n')) {
 
         // printf("%o ", statBuf.st_mode & (S_IRWXU | S_IRWXG | S_IRWXO));
@@ -59,10 +59,10 @@ int main(int argc, char *argv[]){
 
       // Include inode num on each file print, found in Inode man page stat.st_ino;.
       if(strchr(argv[1], 'i'))
-        printf("%lu ", statBuf.st_ino);
+        printf("%llu ", statBuf.st_ino);
 
       printf("%s \n", entryPtr->d_name);
-      }
+    //  }
   }
 
   closedir (dirPtr);

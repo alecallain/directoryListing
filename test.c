@@ -16,7 +16,7 @@ int main(int argc, char *argv[])
 
    while ((entryPtr = readdir (dirPtr))){
   	stat (entryPtr->d_name, &statBuf);
-  	printf("%-20s	%ld\n", entryPtr->d_name, statBuf.st_size);
+  	printf("%-20s	%lld\n", entryPtr->d_name, statBuf.st_size);
    }
    closedir (dirPtr);
    return 0;
