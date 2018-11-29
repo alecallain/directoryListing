@@ -59,7 +59,7 @@ int main(int argc, char *argv[]){
 
       // Include inode num on each file print, found in Inode man page stat.st_ino;.
       if(strchr(argv[1], 'i'))
-        printf("%llu ", statBuf.st_ino);
+        printf("%lu ", statBuf.st_ino);
 
       printf("%s \n", entryPtr->d_name);
     //  }
