@@ -36,8 +36,8 @@ int main(int argc, char *argv[]){
 
   // while there are things to read from the dir
   while ((entryPtr = readdir (dirPtr))){
+    stat (argv[2], &statBuf)
     stat (entryPtr->d_name, &statBuf);
-    stat (argv[2], &statBuf);
     // if (!S_ISDIR(statBuf.st_mode)) {
       if(strchr(argv[1], 'n')) {
 
