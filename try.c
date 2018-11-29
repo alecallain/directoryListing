@@ -9,7 +9,7 @@
 #include <string.h>
 
 
-void print premissiosn(stat statBuf){
+public void premissions(stat statBuf){
     printf( (S_ISDIR(statBuf.st_mode)) ? "d" : "-");
     printf( (statBuf.st_mode & S_IRUSR) ? "r" : "-");
     printf( (statBuf.st_mode & S_IWUSR) ? "w" : "-");
@@ -64,7 +64,7 @@ int main(int argc, char *argv[]){
 
       // printf("%o ", statBuf.st_mode & (S_IRWXU | S_IRWXG | S_IRWXO));
       // a user friendly print https://stackoverflow.com/questions/10323060/printing-file-permissions-like-ls-l-using-stat2-in-c
-      premissiosn(statBuf);
+      premissions(statBuf);
     }
 
     // Include inode num on each file print, found in Inode man page stat.st_ino;.
