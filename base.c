@@ -16,16 +16,21 @@ int main(int argc, char *argv[]){
   DIR *dirPtr;
   struct dirent *entryPtr;
   struct stat statBuf;
-
+  char path[20];
   // path exists check
   if (argc < 2) {
     printf ("Wrong number of arguments\n");
     exit(1);
   }
   if (stat (argv[2], &statBuf) < 0) {
-    perror ("huh?  there is ");
+    perror ("huh? There is ");
     exit(1);
   }
+
+  // Was a file path given?
+	if (argc > 1 && strchr(argv[argc - 1], '/') != NULL) {
+		strcpy(path, argv[argc - 1]);
+	}
 
   // Open directory.
   if ((dirPtr = opendir(argv[2])) == NULL) {
