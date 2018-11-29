@@ -7,6 +7,21 @@
 #include <grp.h>
 #include <errno.h>
 #include <string.h>
+
+
+void print premissiosn(stat statBuf){
+    printf( (S_ISDIR(statBuf.st_mode)) ? "d" : "-");
+    printf( (statBuf.st_mode & S_IRUSR) ? "r" : "-");
+    printf( (statBuf.st_mode & S_IWUSR) ? "w" : "-");
+    printf( (statBuf.st_mode & S_IXUSR) ? "x" : "-");
+    printf( (statBuf.st_mode & S_IRGRP) ? "r" : "-");
+    printf( (statBuf.st_mode & S_IWGRP) ? "w" : "-");
+    printf( (statBuf.st_mode & S_IXGRP) ? "x" : "-");
+    printf( (statBuf.st_mode & S_IROTH) ? "r" : "-");
+    printf( (statBuf.st_mode & S_IWOTH) ? "w" : "-");
+    printf( (statBuf.st_mode & S_IXOTH) ? "x" : "-");
+  }
+
 int main(int argc, char *argv[]){
   DIR *dirPtr;
   struct dirent *entryPtr;
@@ -47,7 +62,9 @@ int main(int argc, char *argv[]){
       else
         printf("%-8d ", statBuf.st_gid);
 
-      printf("%o ", statBuf.st_mode & (S_IRWXU | S_IRWXG | S_IRWXO));
+      // printf("%o ", statBuf.st_mode & (S_IRWXU | S_IRWXG | S_IRWXO));
+      // a user friendly print https://stackoverflow.com/questions/10323060/printing-file-permissions-like-ls-l-using-stat2-in-c
+      premissiosn(statBuf);
     }
 
     // Include inode num on each file print, found in Inode man page stat.st_ino;.
