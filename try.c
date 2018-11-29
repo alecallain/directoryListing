@@ -43,7 +43,7 @@ int main(int argc, char *argv[]){
   // while there are things to read from the dir
   while ((entryPtr = readdir (dirPtr))){
     stat (entryPtr->d_name, &statBuf);
-    if(strchr("i", argv[1])) {
+    if(strchr(argv[1], "i")) {
 
       // Print out owners name if found using getpwuid()
       if ((pwd = getpwuid(statBuf.st_uid)) != NULL)
@@ -59,7 +59,7 @@ int main(int argc, char *argv[]){
     }
 
     // Include inode num on each file print, found in Inode man page stat.st_ino;.
-    if(strchr("n", argv[1]))
+    if(strchr(argv[1], "n"))
       printf("%lu ", statBuf.st_ino);
 
     printf("%s", entryPtr->d_name);
