@@ -62,8 +62,10 @@ int main(int argc, char *argv[]){
       printf("%ld ", statBuf.st_size);
 
       //stat.st_atime;
-      modTime(statBuf);
+      // user friendly output https://stackoverflow.com/questions/13542345/how-to-convert-st-mtime-which-get-from-stat-function-to-string-or-char
       // printf("%ld ",statBuf.st_atime);
+      modTime(statBuf);
+
 
     }
 
@@ -86,7 +88,7 @@ void modTime(struct stat statBuf){
   localtime_r(&t, &lt);
   char timbuf[80];
   strftime(timbuf, sizeof(timbuf), "%c", &lt);
-  printf("%s", timbuf);
+  printf("%s ", timbuf);
 }
 
 void premissions(struct stat statBuf){
