@@ -10,7 +10,9 @@ int main(int argc, char *argv[])
    struct dirent *entryPtr;
    struct stat statBuf;
 
-   dirPtr = opendir (argv[1]);
+   printf("this is what you requested: %s\n\n.", argv[1]);
+
+   dirPtr = opendir ("/home/bolena");
 
    while ((entryPtr = readdir (dirPtr))){
   	stat (entryPtr->d_name, &statBuf);
