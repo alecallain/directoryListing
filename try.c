@@ -16,8 +16,6 @@ int main(int argc, char *argv[]){
   DIR *dirPtr;
   struct dirent *entryPtr;
   struct stat statBuf;
-  struct passwd *psswd;
-  struct group *group;
 
   // path exists check
   if (argc < 2) {
