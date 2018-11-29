@@ -46,6 +46,8 @@ int main(int argc, char *argv[]){
         printf("%-8.8s ", group->gr_name);
       else
         printf("%-8d ", statBuf.st_gid);
+
+        printf("%d", statBuf.st_mode;)
     }
 
     // Include inode num on each file print, found in Inode man page stat.st_ino;.
