@@ -60,7 +60,9 @@ int main(int argc, char *argv[]){
       printf("%ld ", statBuf.st_size);
 
       //stat.st_atime;
-      printf("%ld ",statBuf.st_atime);
+      modTime(statBuf);
+      // printf("%ld ",statBuf.st_atime);
+
     }
 
     // Include inode num on each file print, found in Inode man page stat.st_ino;.
@@ -74,6 +76,15 @@ int main(int argc, char *argv[]){
   closedir (dirPtr);
   return 0;
 
+}
+
+void modTime(struct stat statBuf){
+  time_t t = statBuf.st_mtime;
+  struct tm lt;
+  localtime_r(&t, &lt);
+  char timbuf[80];
+  strftime(timbuf, sizeof(timbuf), "%c", &lt);
+  print("%s", timbuf);
 }
 
 void premissions(struct stat statBuf){
