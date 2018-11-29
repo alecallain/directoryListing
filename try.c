@@ -21,8 +21,11 @@ int main(int argc, char *argv[])
        perror ("huh?  there is ");
        exit(1);
    }
-   strcpy(filePtr, argv[1]);
-   dirPtr = opendir (argv[1]);
+   // Open the directory.
+	if ((dirPtr = opendir(argv[1])) == NULL) {
+		printf("Not a directory.\n");
+		return 1;
+	}
 
    while ((entryPtr = readdir (dirPtr))){
   	stat (entryPtr->d_name, &statBuf);
