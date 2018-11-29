@@ -7,8 +7,10 @@
 #include <grp.h>
 #include <errno.h>
 #include <string.h>
+#include <time.h>
 
 void premissions(struct stat statBuf);
+void modTime(struct stat statBuf);
 
 int main(int argc, char *argv[]){
   DIR *dirPtr;
