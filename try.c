@@ -68,7 +68,7 @@ int main(int argc, char *argv[]){
 
 }
 
-public void premissions(struct stat statBuf){
+void premissions(struct stat statBuf){
     printf( (S_ISDIR(statBuf.st_mode)) ? "d" : "-");
     printf( (statBuf.st_mode & S_IRUSR) ? "r" : "-");
     printf( (statBuf.st_mode & S_IWUSR) ? "w" : "-");
