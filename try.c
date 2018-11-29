@@ -3,6 +3,8 @@
 #include <dirent.h>
 #include <sys/stat.h>
 #include <sys/types.h>
+#include <pwd.h>
+#include <grp.h>
 #include <errno.h>
 #include <string.h>
 int main(int argc, char *argv[]){
@@ -46,8 +48,8 @@ int main(int argc, char *argv[]){
     if(strchr(argv[1], 'i')) {
 
       // Print out owners name if found using getpwuid()
-      if ((pwd = getpwuid(statBuf.st_uid)) != NULL)
-        printf("%-8.8s ", pwd->pw_name);
+      if ((psswd = getpwuid(statBuf.st_uid)) != NULL)
+        printf("%-8.8s ", psswd->pw_name);
       else
         printf("%-8d ", statBuf.st_uid);
 
