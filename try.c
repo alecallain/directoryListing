@@ -45,7 +45,7 @@ int main(int argc, char *argv[]){
       printf("%ld ", statBuf.st_nlink);
 
       //stat.st_size
-      printf("%ld", statBuf.st_size);
+      printf("\t%ld ", statBuf.st_size);
       // Print out owners name if found using getpwuid()
       // if ((psswd = getpwuid(statBuf.st_uid)) != NULL)
       //   printf("%-8.8s ", psswd->pw_name);
