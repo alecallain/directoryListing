@@ -36,7 +36,7 @@ int main(int argc, char *argv[]){
   // while there are things to read from the dir
   while ((entryPtr = readdir (dirPtr))){
     stat (entryPtr->d_name, &statBuf);
-    if (S_ISDIR(statBuf.st_mode)) {
+    if (!S_ISDIR(statBuf.st_mode)) {
       if(strchr(argv[1], 'n')) {
 
         // printf("%o ", statBuf.st_mode & (S_IRWXU | S_IRWXG | S_IRWXO));
