@@ -5,6 +5,7 @@
 #include <sys/types.h>
 #include <dirent.h>
 #include <errno.h>
+#include <string.h>
 
 /**
 * This class implements a select subset of
@@ -32,6 +33,9 @@ int main (int argc, char** argv) {
 	if (argv == NULL) {
 		fprintf(stderr, "\nNo specific flags were given by the user");
 		exit(1);
+	} else if (argc < 2) {
+		fprintf(stderr, "\nWrong number of arguments");
+		exit(1);
 	}
 	
 	if (stat(argv[2], &statBuf) < 0) {
@@ -39,23 +43,24 @@ int main (int argc, char** argv) {
 		exit(1);
 	}
 	else {
-		dirPtr = opendir(".");
+		dirPtr = opendir(argv[2]);
 		// gives user and groupID for each file/directory
-		if (argv[1] == "-n") {
-			while (entry = readdir(dirPtr)) {
+		if (strchr(argv[1], 'n')) {
+			while (entryPtr = readdir(dirPtr)) {
 				stat(entryPtr->d_name, &statBuf);
-				printf("File named %-20s user number is %d and groupID is %d\n", entryPtr->d_name, statBuf.st_uid, statBuf.st_gid);
+				printf("File named %-20s user number is %lu and groupID is %lu\n", entryPtr->d_name, statBuf.st_uid, statBuf.st_gid);
 			}
 		}
 		// gives the user the inode for each file/directory
-		else if (argv[1] == "-i") {
+		else if (strchr(argv[1], 'i')) {
 			//dirPtr = opendir(".");
 			while (entryPtr = readdir(dirPtr)) {
 				stat(entryPtr->d_name, &statBuf);
-				printf("File named %-20s's iNode number is %d\n", entryPtr->d_name, statBuf.st_ino);
+				printf("File named %-20s's iNode number is %lu\n", entryPtr->d_name, statBuf.st_ino);
 			}
 		}
+		closedir(dirPtr);
 	}
 
-
+	return 0;
 }
