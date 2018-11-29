@@ -5,13 +5,24 @@
 #include <sys/types.h>
 #include <errno.h>
 
-int main()
+int main(int argc, char *argv[])
 {
    DIR *dirPtr;
    struct dirent *entryPtr;
    struct stat statBuf;
 
-   dirPtr = opendir (".");
+
+   // path exists check
+   if (argc < 2) {
+       printf ("Wrong number of arguments\n");
+       exit(1);
+   }
+   if (stat (argv[1], &statBuf) < 0) {
+       perror ("huh?  there is ");
+       exit(1);
+   }
+
+   dirPtr = opendir (argv[1]);
 
    while ((entryPtr = readdir (dirPtr))){
   	stat (entryPtr->d_name, &statBuf);
@@ -20,4 +31,3 @@ int main()
    closedir (dirPtr);
    return 0;
 }
-
