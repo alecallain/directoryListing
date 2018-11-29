@@ -10,7 +10,7 @@ int main(int argc, char *argv[])
    DIR *dirPtr;
    struct dirent *entryPtr;
    struct stat statBuf;
-   char* filePtr = "."
+   char* filePtr = ".";
 
    // path exists check
    if (argc < 2) {
