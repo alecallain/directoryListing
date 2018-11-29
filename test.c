@@ -12,7 +12,7 @@ int main(int argc, char *argv[])
 
    printf("this is what you requested: %s\n\n.", argv[1]);
 
-   dirPtr = opendir ("/home/bolena");
+   dirPtr = opendir (\argv[1]);
 
    while ((entryPtr = readdir (dirPtr))){
   	stat (entryPtr->d_name, &statBuf);
