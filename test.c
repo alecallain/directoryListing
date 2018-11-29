@@ -6,9 +6,6 @@
 #include <errno.h>
 #include <string.h>
 
-void parse(char* strInput, char** parsedInput);
-
-
 int main(int argc, char *argv[])
 {
   DIR *dirPtr;
@@ -37,23 +34,4 @@ int main(int argc, char *argv[])
     closedir (dirPtr);
     return 0;
     // }
-}
-
-void parse(char * strInput, char** parsedInput)
-{
-	char *pos;
-	if((pos=strchr(strInput, '\n')) != NULL){
-		*pos = '\0';
-	}
-	char * pch;
-	pch = strtok(strInput," ");
-	int count = 0;
-  	while (pch != NULL)
- 	{
-    	//	printf ("*%s*\n",pch);
-    		parsedInput[count] = pch;
-    		pch = strtok (NULL, " ");
-    		count++;
-  	}
-	parsedInput[count]=NULL;
 }
