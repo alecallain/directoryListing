@@ -44,20 +44,20 @@ int main(int argc, char *argv[]){
 
       printf("%ld ", statBuf.st_nlink);
 
-      //stat.st_size
-      printf("\t%ld ", statBuf.st_size);
       // Print out owners name if found using getpwuid()
       // if ((psswd = getpwuid(statBuf.st_uid)) != NULL)
       //   printf("%-8.8s ", psswd->pw_name);
       // else
-        printf("%-8d ", statBuf.st_uid);
+      printf("%-8d ", statBuf.st_uid);
 
       // group name in words if found using getgrgid() else just numbers
       // if ((group = getgrgid(statBuf.st_gid)) != NULL)
       //   printf("%-8.8s ", group->gr_name);
       // else
-        printf("%-8d ", statBuf.st_gid);
+      printf("%-8d ", statBuf.st_gid);
 
+      //stat.st_size
+      printf("%ld ", statBuf.st_size);
 
     }
 
