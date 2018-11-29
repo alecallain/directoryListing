@@ -42,7 +42,7 @@ int main(int argc, char *argv[]){
       // a user friendly print https://stackoverflow.com/questions/10323060/printing-file-permissions-like-ls-l-using-stat2-in-c
       premissions(statBuf);
 
-      prinf("%d ", statBuf.st_nlink);
+      printf("%d ", statBuf.st_nlink);
 
       // Print out owners name if found using getpwuid()
       if ((psswd = getpwuid(statBuf.st_uid)) != NULL)
