@@ -13,7 +13,7 @@ int main(int argc, char *argv[])
   struct stat statBuf;
 
   // while(strcmp(parsedInput[0], "exit") != 0){
-  printf("0: %s \n", argv[1]);
+
     // path exists check
     if (argc < 2) {
     		printf ("Wrong number of arguments\n");
@@ -25,7 +25,7 @@ int main(int argc, char *argv[])
     }
 
     dirPtr = opendir (argv[1]);
-
+    printf("0: %s \n", argv[1]);
     while ((entryPtr = readdir (dirPtr))){
       stat (entryPtr->d_name, &statBuf);
       printf("%-20s	%ld\n", entryPtr->d_name, statBuf.st_size);
