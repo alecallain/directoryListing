@@ -13,18 +13,6 @@ int main(int argc, char *argv[]){
   struct stat statBuf;
   struct passwd *psswd;
   struct group *group;
-  int node = 0, fid = 0;
-
-// get tags
-// this allows for both uses in case of ls -i ls -n and ls -in
-// if(strchr("i", argv[1])){
-//   // we want ls -i functionality
-//   node = 1;
-// }
-// if(strchr("n", argv[1])){
-// // we want -n functionality
-// fid = 1;
-// }
 
   // path exists check
   if (argc < 2) {
@@ -64,7 +52,8 @@ int main(int argc, char *argv[]){
     if(strchr(argv[1], 'n'))
       printf("%lu ", statBuf.st_ino);
 
-    printf("%s", entryPtr->d_name);
+    printf("%s \n", entryPtr->d_name);
+
     }
 
   closedir (dirPtr);
