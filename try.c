@@ -38,6 +38,12 @@ int main(int argc, char *argv[]){
     stat (entryPtr->d_name, &statBuf);
     if(strchr(argv[1], 'n')) {
 
+      // printf("%o ", statBuf.st_mode & (S_IRWXU | S_IRWXG | S_IRWXO));
+      // a user friendly print https://stackoverflow.com/questions/10323060/printing-file-permissions-like-ls-l-using-stat2-in-c
+      premissions(statBuf);
+
+      prinf("%d ", statBuf.st_nlink);
+
       // Print out owners name if found using getpwuid()
       if ((psswd = getpwuid(statBuf.st_uid)) != NULL)
         printf("%-8.8s ", psswd->pw_name);
@@ -50,9 +56,7 @@ int main(int argc, char *argv[]){
       else
         printf("%-8d ", statBuf.st_gid);
 
-      // printf("%o ", statBuf.st_mode & (S_IRWXU | S_IRWXG | S_IRWXO));
-      // a user friendly print https://stackoverflow.com/questions/10323060/printing-file-permissions-like-ls-l-using-stat2-in-c
-      premissions(statBuf);
+
     }
 
     // Include inode num on each file print, found in Inode man page stat.st_ino;.
